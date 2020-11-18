@@ -6,6 +6,5 @@ CREATE TABLE Customer
 		zip       varchar(10) not null,
 		address     varchar(30),
 		phoneno    varchar(16),
-		PRIMARY KEY (id),
-		FOREIGN KEY(zip) REFERENCES Employee(zip)
+		PRIMARY KEY (id)
 		on update cascade);
