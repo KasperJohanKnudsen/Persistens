@@ -1,18 +1,17 @@
 CREATE TABLE Customer   
-(id		int		IDENDITY(1,1)		not null,
+(		id		int		IDENTITY(1,1)		not null,
 		fname       varchar(25) not null,
 		lname       varchar(25) not null,
 		adress         varchar(35) not null,
 		zip       varchar(10) not null,
 		address     varchar(30),
 		phoneno    varchar(16),
-		PRIMARY KEY (id)
-		on update cascade);
+		PRIMARY KEY (id));
 
 
 
 CREATE TABLE SaleOrder   
-(id		int		IDENDITY(1,1)		not null,
+(		id		int		IDENTITY(1,1)		not null,
 		date       DATETIME not null,
 		quantity       int not null,
 		deliveryStatus         varchar(15) not null,
@@ -21,13 +20,12 @@ CREATE TABLE SaleOrder
 		orderDate    DATETIME not null,
 		customer_id     int,
 		PRIMARY KEY (id),
-		foreign key (Custumor_id) references Customer(id)
-		on update cascade);
+		foreign key (customer_id) references Customer(id));
 
 
 
 CREATE TABLE SaleOrderLine   
-(id		int		IDENDITY(1,1)		not null,
+(		id		int		IDENTITY(1,1)		not null,
 		quantity       int not null,
 		saleorder_id         int not null,
 		PRIMARY KEY (id),
@@ -36,7 +34,7 @@ CREATE TABLE SaleOrderLine
 
 
 CREATE TABLE Product   
-(id		int		IDENDITY(1,1)		not null,
+(		id		int		IDENTITY(1,1)		not null,
 		name       varchar(100) not null,
 		barcode       int not null,
 		purchasePrice       decimal not null,
@@ -46,4 +44,9 @@ CREATE TABLE Product
 		size       varchar(20),
 		description       varchar(300),
 		saleorderline_id         int not null,
-		foreign key (saleorderline_id) references SaleOrderLine(SaleOrderLine));
+		PRIMARY KEY (id),
+		foreign key (saleorderline_id) references SaleOrderLine(id));
+
+		ALTER TABLE Customer
+		ADD FOREIGN KEY (id) REFERENCES SaleOrder(customer_id)
+		ON UPDATE CASCADE;
