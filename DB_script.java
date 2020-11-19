@@ -50,3 +50,23 @@ CREATE TABLE Product
 		ALTER TABLE Customer
 		ADD FOREIGN KEY (id) REFERENCES SaleOrder(customer_id)
 		ON UPDATE CASCADE;
+		
+		
+		// brugt til at lave et set test data
+		insert into Customer values ('lars','kurtsen', 'vejvej 20', '9000', 'Aalborg', '55555555');
+		insert into Customer values ('jens','larsen', 'gågade 23, 1th', '9200', 'Aalborg', '44446666');
+		insert into Customer values ('hans','hansen', 'vestergade 1', '1291', 'Rønne', '22223232');
+
+		insert into SaleOrder values (GETDATE(), '30', 'shipped', GETDATE(), 'nyd produktet', GETDATE() , '1');
+		insert into SaleOrder values (GETDATE(), '22', 'waiting', GETDATE(), 'nyd produktet', GETDATE() , '2');
+		insert into SaleOrder values (GETDATE(), '213', 'shipped', GETDATE(), 'efterlad pakken ved fordøren', GETDATE() , '3');
+
+		insert into SaleOrderLine values ('30', '1');
+		insert into SaleOrderLine values ('12', '2');
+		insert into SaleOrderLine values ('22', '3');
+
+		insert into Product values ('Hat', '444333', '99', '199', 'USA', '20', 'LARGE', 'dette er en hat', '1');
+		insert into Product values ('sko', '111222', '400', '999', 'USA', '5', '48', 'dette er en sko', '2');
+		insert into Product values ('belte', '123456', '49', '149', 'USA', '10', '', 'dette er et belte', '3');
+		
+		

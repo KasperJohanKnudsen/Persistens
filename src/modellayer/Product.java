@@ -11,8 +11,7 @@ public class Product{
 	private String size;
 	private String description;
 	
-	public Product(int id, String name, int barcode, double purchasePrice, double salesPrice, String origin, int stock, String size,
-			String description) {
+	public Product() {
 		this.id = id;
 		this.name = name;
 		this.barcode = barcode;
