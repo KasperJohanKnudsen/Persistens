@@ -17,6 +17,7 @@ public class ProductController {
 	public static Product findProductByName(String name) throws DataAccessException {
 		return productDB.findByName(name);
 	}
+	
 
 
 }

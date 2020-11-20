@@ -198,6 +198,7 @@ public class Gui extends JFrame {
 		contentPane.add(lblTotalPrice);
 		
 		btnConfirm = new JButton("Betal");
+
 		btnConfirm.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnConfirm.setBackground(Color.GREEN);
 		btnConfirm.setBounds(606, 466, 120, 39);
@@ -210,11 +211,13 @@ public class Gui extends JFrame {
 		contentPane.add(btnAnullerOrdre);
 	}
 	
+	
+
 	private void findProduct() throws DataAccessException  {
 		if(searchField.getText().isEmpty()) {
 			System.out.println("Skriv et navn i feltet");
-			
 		}else{
+			System.out.println(searchField.getText());
 			Product p = ProductController.findProductByName(searchField.getText());
 			if(p == null) {
 				System.out.println("LORTE PROGRAM");
@@ -224,7 +227,7 @@ public class Gui extends JFrame {
 				System.out.println(searchField.getText());
 			}
 
-			System.out.println(searchField.getText());
+
 		}
 
 		

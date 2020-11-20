@@ -14,7 +14,7 @@ public class SaleOrderController{
 		}
 		return Vare;
 	}
-	
+
 	public Product addProduct(String name) throws DataAccessException {
 		Product product = null;
 		if (ProductController.findProductByName(name) != null) {

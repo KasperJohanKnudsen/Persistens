@@ -23,9 +23,6 @@ public class DBConnection {
 	private static final String password = "Password1!";
 
 	private DBConnection() throws DataAccessException {
-		// Cheat sheet for the printf() method, the format is also used in the
-		// String.format() method
-		// http://alvinalexander.com/programming/printf-format-cheat-sheet
 		String connectionString = String.format("jdbc:sqlserver://%s:%d;databaseName=%s;user=%s;password=%s",
 				serverAddress, serverPort, dbName, userName, password);
 		try {
@@ -33,15 +30,9 @@ public class DBConnection {
 			connection = DriverManager.getConnection(connectionString);
 		} catch (ClassNotFoundException e) {
 			throw new DataAccessException("Missing JDBC driver", e);
-			// System.err.println("Could not load JDBC driver");
-			// e.printStackTrace();
-
 		} catch (SQLException e) {
 			throw new DataAccessException(String.format("Could not connect to database %s@%s:%d user %s", dbName,
 					serverAddress, serverPort, userName), e);
-			// System.out.println("Connection string was: " + connectionString.substring(0,
-			// connectionString.length() - password.length()) + "....");
-			// e.printStackTrace();
 		}
 	}
 

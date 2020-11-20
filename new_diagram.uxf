@@ -1,1 +1,342 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><umlet_diagram></umlet_diagram>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>6</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>246</x>
+      <y>630</y>
+      <w>186</w>
+      <h>318</h>
+    </coordinates>
+    <panel_attributes>modellayer::Product
+--
+-id: int
+-name: String
+-barcode: int
+-purchasePrice: double
+-salesPrice: double
+-origin: String
+-stock: int
+-size: String
+-description: String
+--
++Product(): ctor
++getId(): int
++setId(int id): void
++getName(): String
++setName(String name): void
++getPurchasePrice(): double
++setPurchasePrice(double purchasePrice): void
++getBarcode(): int
++setBarcode(int barcode): void
++getSalesPrice(): double
++setSalesPrice(double salesPrice): void
++getStock(): int
++setStock(int stock): void
++getSize(): String
++setSize(String size): void
++getOrigin(): String
++setOrigin(String origin): void
++getDescription(): String
++setDescription(String description): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>522</x>
+      <y>624</y>
+      <w>186</w>
+      <h>258</h>
+    </coordinates>
+    <panel_attributes>modellayer::SaleOrder
+--
+-id: int
+-date: Date
+-quantity: int
+-deliveryStatus: String
+-deliveryDate: Date
+-deliveryNote: String
+-orderDate: Date
+--
++SaleOrder(): ctor
++getId(): int
++setId(int id): void
++getDate(): Date
++setDate(Date date): void
++getQuantity(): int
++setQuantity(int quantity): void
++getDeliveryStatus(): String
++setDeliveryStatus(String deliveryStatus): void
++getDeliveryDate(): Date
++setDeliveryDate(Date deliveryDate): void
++getDeliveryNote(): String
++setDeliveryNote(String deliveryNote): void
++getOrderDate(): Date
++setOrderDate(Date orderDate): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>516</x>
+      <y>0</y>
+      <w>120</w>
+      <h>222</h>
+    </coordinates>
+    <panel_attributes>guilayer::Gui
+--
+-contentPane: JPanel
+-textFieldBarcode: JTextField
+-textField: JTextField
+-textField_1: JTextField
+-textField_2: JTextField
+-textField_3: JTextField
+-textField_4: JTextField
+-lbpostnrLabel: JLabel
+-lblBylabel: JLabel
+-lblTelefonLabel: JLabel
+-panel: JPanel
+-searchField: JTextField
+-lblProductAmount: JLabel
+-lblProductPrice: JLabel
+-lblTotalPrice: JLabel
+-btnConfirm: JButton
+-btnAnullerOrdre: JButton
+--
++Gui(): ctor
++main(String[] args): void
+-findProduct(): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>510</x>
+      <y>372</y>
+      <w>270</w>
+      <h>186</h>
+    </coordinates>
+    <panel_attributes>databaselayer::DBConnection
+--
+-connection = null: Connection
+-dbConnection: DBConnection
+-driverClass = "com.microsoft.sqlserver.jdbc.SQLServerDriver": String
+-dbName = "dmaa0220_1083803": String
+-serverAddress = "hildur.ucn.dk": String
+-serverPort = 1433: int
+-userName = "dmaa0220_1083803": String
+-password = "Password1!": String
+--
+-DBConnection(): ctor
++getInstance(): DBConnection
++startTransaction(): void
++commitTransaction(): void
++rollbackTransaction(): void
++getConnection(): Connection
++disconnect(): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>210</x>
+      <y>396</y>
+      <w>264</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>databaselayer::ProductDB
+--
+-FIND_BY_ID = "select * from Product where id = ?": String
+-FIND_BY_NAME = "select * from Product where name = ?": String
+-DBTEST = "select * from Product": String
+-findById: PreparedStatement
+-findByName: PreparedStatement
+-dbTest: PreparedStatement
+--
++ProductDB(): ctor
++init(): void
++findById(int id): Product
++findByName(String name): Product
+-buildObject(ResultSet rs): Product
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>846</x>
+      <y>372</y>
+      <w>348</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>databaselayer::DBMessages
+--
+~COULD_NOT_READ_RESULTSET = "Could not read resultset": String
+~COULD_NOT_PREPARE_STATEMENT = "Could not prepare statement": String
+~COULD_NOT_BIND_OR_EXECUTE_QUERY = "Could not bind or execute query": String
++COULD_NOT_BIND_PS_VARS_INSERT = "Could not bind ps variables for insert": String
++COULD_NOT_INSERT = "Could not insert new record": String
+--
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>270</x>
+      <y>270</y>
+      <w>174</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>controllayer::ProductController
+--
+-productDB: ProductDB
+--
++ProductController(): ctor
++findProductByID(int id): Product
++findProductByName(String name): Product
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>24</x>
+      <y>426</y>
+      <w>144</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+databaselayer::ProductDBIF
+--
+--
+~findById(int id): Product
+~findByName(String name): Product
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>504</x>
+      <y>270</y>
+      <w>144</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>controllayer::SaleOrderController
+--
+--
++find(String name): String
++addProduct(String name): Product
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>750</x>
+      <y>630</y>
+      <w>114</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>modellayer::SaleOrderLine
+--
+~quantity: int
+--
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>570</x>
+      <y>216</y>
+      <w>18</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;90.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>438</x>
+      <y>294</y>
+      <w>78</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;110.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>354</x>
+      <y>336</y>
+      <w>18</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;100.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>162</x>
+      <y>456</y>
+      <w>60</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;80.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>336</x>
+      <y>534</y>
+      <w>18</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;160.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>402</x>
+      <y>366</y>
+      <w>120</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>180.0;10.0;10.0;10.0;10.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>774</x>
+      <y>414</y>
+      <w>84</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>120.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+</diagram>

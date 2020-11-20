@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-
 import controllayer.DataAccessException;
 
 import modellayer.*;
@@ -14,9 +13,11 @@ public class ProductDB implements ProductDBIF {
 
 	private static final String FIND_BY_ID = "select * from Product where id = ?";
 	private static final String FIND_BY_NAME = "select * from Product where name = ?";
+	private static final String DBTEST = "select * from Product"; // fjern
 
 	private PreparedStatement findById;
 	private PreparedStatement findByName;
+	private PreparedStatement dbTest; // fjern
 
 	public ProductDB() throws DataAccessException {
 		init();
@@ -27,12 +28,12 @@ public class ProductDB implements ProductDBIF {
 		try {
 			findById = con.prepareStatement(FIND_BY_ID);
 			findByName = con.prepareStatement(FIND_BY_NAME);
+			dbTest = con.prepareStatement(DBTEST); // fjern
 		} catch (SQLException e) {
 			throw new DataAccessException(DBMessages.COULD_NOT_PREPARE_STATEMENT, e);
 		}
 	}
 
-	
 	@Override
 	public Product findById(int id) throws DataAccessException {
 		Product r = null;
@@ -44,15 +45,15 @@ public class ProductDB implements ProductDBIF {
 			}
 		} catch (SQLException e) {
 			throw new DataAccessException(DBMessages.COULD_NOT_BIND_OR_EXECUTE_QUERY, e);
-
 		}
 		return r;
 	}
-	
+
 	public Product findByName(String name) throws DataAccessException {
 		Product r = null;
 		try {
-			findByName.setString(1, name);;
+			findByName.setString(1, name);
+			;
 			ResultSet rs = findByName.executeQuery();
 			if (rs.next()) {
 				r = buildObject(rs);
@@ -81,6 +82,5 @@ public class ProductDB implements ProductDBIF {
 		}
 		return product;
 	}
-	
-	
+
 }
